@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDom from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class ComopnentByClass extends React.Component{
+    constructor(){
+        super()
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+        this.state = {
+            cantidad: 50
+        }
+    }
+    render(){
+        return(
+            <div>
+                <h3>{this.props.name}</h3>
+                <span>{this.state.cantidad}</span>
+                <br/>
+                <button onClick={
+                    () => {
+                        this.setState({cantidad: this.state.cantidad + 1});
+                    }
+                }>agregar</button>
+                <hr></hr>
+                <p>Descripción ....</p>
+            </div>
+        )
+    }
+}
+
+const App = () => (
+    <ComopnentByClass name="Cmbiar de nombre"></ComopnentByClass>
+)
+
+const root = document.getElementById('root')
+
+ReactDom.render(<App></App>, root)
